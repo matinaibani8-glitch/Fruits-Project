@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show | Student</title>
+</head>
+
+<body style="background-color: aliceblue;">
+    <h1 style="text-align: center;color: blue;">Student Management System</h1>
+    <hr>
+    <div class="container my-5">
+        <h2 style="text-align: center;color: blue;">Show Students</h2>
+        <hr>
+        <!-- {{data}} -->
+        <!-- {% for i in data %}
+        {{i.id}}
+        {{i.name}}
+        {{i.email}}
+        {{i.city}}
+        {% endfor %} -->
+
+        <table class="table table-dark table=striped">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>City</th>
+                <th>Action</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.city}}</td>
+                <td><a href="/updatedata/{{i.id}}">Update</a>
+                <a href="/deletedata/{{i.id}}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <hr>
+        <a href="/">Index Page</a>
+    </div>
+</body>
+
+</html>

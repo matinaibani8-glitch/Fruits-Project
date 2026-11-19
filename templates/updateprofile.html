@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #59613A, #41492B, #292f1c);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+        }
+
+        .signup-container {
+            background: #fff;
+            width: 100%;
+            max-width: 550px;
+            padding: 38px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.7s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-icon {
+            width: 65px;
+            height: 65px;
+            background: #59613A;
+            color: white;
+            border-radius: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 27px;
+            margin: 0 auto 17px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #303522;
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #41452f;
+            font-size: 14px;
+        }
+
+        .input-box {
+            position: relative;
+        }
+
+        .input-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #697447;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px 15px 13px 43px;
+            border: 1px solid #d9ddce;
+            border-radius: 9px;
+            font-size: 14px;
+            outline: none;
+            background: #fafbf7;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #59613A;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(89, 97, 58, 0.13);
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .update-btn,
+        .delete-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .update-btn {
+            background: linear-gradient(135deg, #59613A, #41492B);
+        }
+
+        .update-btn:hover {
+            background: #343b22;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(65, 73, 43, 0.25);
+        }
+
+        .delete-btn {
+            background: #dc4c4c;
+        }
+
+        .delete-btn:hover {
+            background: #b92f2f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(220, 76, 76, 0.2);
+        }
+
+        @media (max-width: 480px) {
+            .signup-container {
+                padding: 27px 22px;
+            }
+
+            h2 {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="signup-container">
+
+        <div class="profile-icon">
+            <i class="fa-solid fa-user-pen"></i>
+        </div>
+
+        <h2>Update Your Profile</h2>
+        <p class="subtitle">Keep your personal information up to date</p>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="firstname">First Name</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="firstname" name="firstname"
+                        value="{{uid.firstname}}" maxlength="20" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="lastname" name="lastname"
+                        value="{{uid.lastname}}" maxlength="20" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="gmail">Email Address</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="gmail" name="email"
+                        value="{{uid.email}}" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" name="password"
+                        value="{{uid.password}}" minlength="8" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-city"></i>
+                    <input type="text" id="city" name="city"
+                        value="{{uid.city}}" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="state">State</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <input type="text" id="state" name="state"
+                        value="{{uid.state}}" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mobilenumber">Mobile Number</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="tel" id="mobilenumber" name="num"
+                        value="{{uid.num}}" pattern="[0-9]{10}"
+                        maxlength="10" inputmode="numeric" required>
+                </div>
+            </div>
+
+            <div class="button-container">
+
+                <button type="submit" class="update-btn">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Update Profile
+                </button>
+
+                <a href="/delete/{{uid.id}}" class="delete-btn"
+                    onclick="return confirm('Are you sure you want to delete this profile?')">
+                    <i class="fa-solid fa-trash"></i>
+                    Delete Profile
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
