@@ -5,6 +5,8 @@ class userform(forms.ModelForm):
     class Meta:
         model = userdata
         fields = "__all__"
+
+        
 class updateform(forms.ModelForm):
     class Meta:
         model = userdata
